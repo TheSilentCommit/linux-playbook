@@ -93,11 +93,11 @@ vm.vfs_cache_pressure=50
 
 [+] CONFIGURING GIT AND GITHUB
 
-# ssh-keygen -t ed25519 -C "myemail@example.com"
+# ssh-keygen -t ed25519 -C "user@example.com"
 
-# git config --global user.name "Jason"
+# git config --global user.name "User"
 
-# git config --global user.email "jason@example.com"
+# git config --global user.email "user@example.com"
 
 [+] CONFIGURING POSTMAN
 
