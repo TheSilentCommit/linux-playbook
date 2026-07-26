@@ -4,8 +4,6 @@
 
 [+] VIRTUALIZATION STACK
 
-+] VIRTUALIZATION STACK
-
 ├── KVM
 │   └── Hardware virtualization module built into the Linux kernel.
 │       Uses Intel VT-x or AMD-V to accelerate virtual machines.
