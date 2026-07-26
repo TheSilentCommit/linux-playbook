@@ -1,0 +1,41 @@
+#############################################################################################################
+#                                              KVM virtualization                                           #
+#############################################################################################################
+
+[+] VIRTUALIZATION STACK
+
++] VIRTUALIZATION STACK
+
+├── KVM
+│   └── Hardware virtualization module built into the Linux kernel.
+│       Uses Intel VT-x or AMD-V to accelerate virtual machines.
+│
+├── QEMU
+│   ├── Emulator and virtual machine monitor.
+│   ├── Uses KVM for near-native performance when available.
+│   ├── qemu-system-x86
+│   │   └── Runs x86/x86_64 virtual machines.
+│   └── qemu-utils
+│       └── Utilities such as qemu-img, qemu-nbd, and qemu-io.
+│
+├── libvirt
+│   ├── Virtualization management API and daemon.
+│   ├── libvirt-daemon-system
+│   │   └── Installs and configures the libvirt daemon.
+│   └── libvirt-clients
+│       └── Command-line tools such as virsh and virt-install.
+│
+└── virt-manager
+    └── Graphical interface for creating and managing virtual machines through libvirt.
+
+$ sudo apt install -y qemu-system-x86 qemu-utils libvirt-daemon-system libvirt-clients virt-manager
+
+$ sudo systemctl enable --now libvirtd
+
+$ systemctl status libvirtd
+
+$ sudo usermod -aG libvirt,kvm $USER
+
+- Verify the groups that you are in, you should see both: libvirt and kvm
+
+$ groups
