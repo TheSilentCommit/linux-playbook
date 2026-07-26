@@ -85,11 +85,6 @@ vm.vfs_cache_pressure=50
 
 # apt install curl
 # apt install git
-# Brave
-# ProtonVPN
-# Node.js
-# Postman
-# Visual Studio Code
 
 [+] CONFIGURING GIT AND GITHUB
 
@@ -134,7 +129,6 @@ export PATH="$PATH:/your/path"
 - Apply the changes:
 
 $ source ~/.bashrc
-
 
 [+] ADDING A DIRECTORY TO SYSTEM-WIDE $PATH
 
