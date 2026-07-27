@@ -37,3 +37,11 @@ $ sudo usermod -aG libvirt,kvm $USER
 - Verify the groups that you are in, you should see both: libvirt and kvm
 
 $ groups
+
+- Configure the default libvirt network to start automatically at boot
+
+$ sudo virsh net-autostart default
+
+- Check if the default libvirt network status
+
+$ sudo virsh net-info default
