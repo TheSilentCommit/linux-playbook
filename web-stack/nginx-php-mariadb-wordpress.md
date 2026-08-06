@@ -38,6 +38,12 @@ systemctl status mariadb
 sudo mysql_secure_installation
 ```
 
+If the mysql_secure_installation didn't work
+
+```bash
+sudo mariadb-secure-installation
+```
+
 Recommended answers:
 
 | Prompt | Answer |
