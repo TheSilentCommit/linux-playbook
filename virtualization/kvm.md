@@ -1,9 +1,6 @@
-#############################################################################################################
-#                                              KVM virtualization                                           #
-#############################################################################################################
+## VIRTUALIZATION STACK
 
-[+] VIRTUALIZATION STACK
-
+```text
 ├── KVM
 │   └── Hardware virtualization module built into the Linux kernel.
 │       Uses Intel VT-x or AMD-V to accelerate virtual machines.
@@ -25,23 +22,32 @@
 │
 └── virt-manager
     └── Graphical interface for creating and managing virtual machines through libvirt.
+```
 
-$ sudo apt install -y qemu-system-x86 qemu-utils libvirt-daemon-system libvirt-clients virt-manager
+```bash
+sudo apt install -y qemu-system-x86 qemu-utils libvirt-daemon-system libvirt-clients virt-manager
 
-$ sudo systemctl enable --now libvirtd
+sudo systemctl enable --now libvirtd
 
-$ systemctl status libvirtd
+systemctl status libvirtd
 
-$ sudo usermod -aG libvirt,kvm $USER
+sudo usermod -aG libvirt,kvm $USER
+```
 
-- Verify the groups that you are in, you should see both: libvirt and kvm
+Verify the groups that you are in, you should see both: libvirt and kvm
 
-$ groups
+```bash
+groups $USER
+```
 
-- Configure the default libvirt network to start automatically at boot
+Configure the default libvirt network to start automatically at boot
 
-$ sudo virsh net-autostart default
+```bash
+sudo virsh net-autostart default
+```
 
-- Check if the default libvirt network status
+Check if the default libvirt network status
 
-$ sudo virsh net-info default
+```bash
+sudo virsh net-info default
+```
