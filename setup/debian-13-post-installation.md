@@ -1,4 +1,4 @@
-## 1. REMOVING X11VNC AND GNOME-CONNECTIONS
+## 1. Remuving X11VNC and Gnome-Connections
 
 ```bash
 apt purge x11vnc
@@ -8,7 +8,7 @@ apt purge gnome-connections
 apt autoremove
 ```
 
-## 2. CONFIGURING APT SOURCES
+## 2. Configuring apt sources
 
 ```bash
 mv /etc/apt/sources.list /etc/apt/sources.list.bkp
@@ -35,13 +35,13 @@ deb https://deb.debian.org/debian trixie-updates main contrib non-free non-free-
 apt update && apt full-upgrade -y
 ```
 
-## 3. INSTALLING FIREWALL TOOLS
+## 3. Installing firewall tools
 
 ```bash
 apt install ufw gufw
 ```
 
-## 4. CONFIGURING KERNEL SWAPPINESS VALUES
+## 4. Configuring kernel swappiness values
 
 ```bash
 nano /etc/sysctl.d/99-swappiness.conf
@@ -57,7 +57,7 @@ vm.swappiness=10
 vm.vfs_cache_pressure=50
 ```
 
-## 5. CREATING SWAP FILE
+## 5. Creating swap file
 
 Check if a swap file or partition already exists
 
@@ -97,19 +97,19 @@ Make the changes permanent
 echo '/swapfile none swap sw 0 0' >> /etc/fstab
 ```
 
-## 6. INSTALLING KERNEL HEADERS
+## 6. Installing kernel headers
 
 ```bash
 apt install linux-headers-amd64 linux-headers-$(uname -r)
 ```
 
-## 7. INSTALLING LINUX FIRMWARE
+## 7. Installing Linux firmware
 
 ```bash
 apt install firmware-linux firmware-linux-nonfree
 ```
 
-## 8. INSTALLING APPLICATIONS
+## 8. Installing applications
 
 ```bash
 apt install curl
@@ -121,7 +121,7 @@ apt install git
 - PyCharm
 - Visual Studio Code
 
-## 9. CONFIGURING GIT AND GITHUB
+## 9. Configuring Git and GitHub
 
 ```bash
 ssh-keygen -t ed25519 -C "user@example.com"
@@ -131,7 +131,7 @@ git config --global user.name "User"
 git config --global user.email "user@example.com"
 ```
 
-## 10. CONFIGURING POSTMAN
+## 10. Configuring Postman
 
 ```bash
 tar -xzf postman.tar.gz -C /opt
@@ -155,7 +155,7 @@ Categories=Development;
 StartupNotify=true
 ```
 
-## 11. ADDING A DIRECTORY TO USER $PATH
+## 11. Adding a directory to user's $PATH
 
 Edit the file ~/.bashrc:
 
@@ -175,7 +175,7 @@ Apply the changes:
 source ~/.bashrc
 ```
 
-## 12. ADDING A DIRECTORY TO SYSTEM-WIDE $PATH
+## 12. Adding a directory to system-wide $PATH
 
 Create a script in /etc/profile.d/:
 
