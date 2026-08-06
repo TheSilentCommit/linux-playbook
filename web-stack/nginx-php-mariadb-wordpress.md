@@ -109,7 +109,7 @@ server {
     server_name _;
     
     root /var/www/wordpress;
-    index index,php index.html;
+    index index.php index.html;
     
     access_log /var/log/nginx/wordpress_access.log;
     error_log /var/log/nginx/wordpress_error.log;
