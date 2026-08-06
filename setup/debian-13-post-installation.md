@@ -1,22 +1,22 @@
-#############################################################################################################
-#                               DEBIAN 13 (TRIXIE) POST-INSTALLATION GUIDE                                  #
-#############################################################################################################
+## 1. REMOVING X11VNC AND GNOME-CONNECTIONS
 
-[+] REMOVING X11VNC AND GNOME-CONNECTIONS
+```bash
+apt purge x11vnc
 
-# apt purge x11vnc
+apt purge gnome-connections
 
-# apt purge gnome-connections
+apt autoremove
+```
 
-# apt autoremove
+## 2. CONFIGURING APT SOURCES
 
-[+] CONFIGURING APT SOURCES
+```bash
+mv /etc/apt/sources.list /etc/apt/sources.list.bkp
 
-# mv /etc/apt/sources.list /etc/apt/sources.list.bkp
+nano /etc/apt/sources.list
+```
 
-# nano /etc/apt/sources.list
-
--------------------------------------------------------------------------------------------------------------
+```text
 deb https://deb.debian.org/debian/ trixie main contrib non-free non-free-firmware
 #deb-src https://deb.debian.org/debian/ trixie main contrib non-free non-free-firmware
 
@@ -29,19 +29,25 @@ deb https://deb.debian.org/debian trixie-updates main contrib non-free non-free-
 ## Debian Trixie Backports
 #deb https://deb.debian.org/debian trixie-backports main contrib non-free non-free-firmware
 #deb-src https://deb.debian.org/debian trixie-backports main contrib non-free non-free-firmware
--------------------------------------------------------------------------------------------------------------
+```
 
-# apt update && apt full-upgrade -y
+```bash
+apt update && apt full-upgrade -y
+```
 
-[+] INSTALLING FIREWALL TOOLS
+## 3. INSTALLING FIREWALL TOOLS
 
-# apt install ufw gufw
+```bash
+apt install ufw gufw
+```
 
-[+] CONFIGURING KERNEL SWAPPINESS VALUES
+## 4. CONFIGURING KERNEL SWAPPINESS VALUES
 
-# nano /etc/sysctl.d/99-swappiness.conf
+```bash
+nano /etc/sysctl.d/99-swappiness.conf
+```
 
--------------------------------------------------------------------------------------------------------------
+```text
 # Controls the kernel tendency to move processes to swap space
 # Lower value = more RAM usage and less disk usage (default: 60)
 vm.swappiness=10
@@ -49,62 +55,93 @@ vm.swappiness=10
 # Controls how aggressively the kernel reclaims inode/dentry cache
 # Lower value = more cache kept = better disk performance (default: 100)
 vm.vfs_cache_pressure=50
--------------------------------------------------------------------------------------------------------------
+```
 
-[+] CREATING SWAP FILE
+## 5. CREATING SWAP FILE
 
-// Check if a swap file or partition already exists
-# swapon --show
+Check if a swap file or partition already exists
 
-# free -h
+```bash
+swapon --show
 
-// Create a swap file
+free -h
+```
+
+Create a swap file
+
+```bash
 # fallocate -l 8G /swapfile
+```
 
-// Set permissions so only root can read and write
+Set permissions so only root can read and write
+
+```bash
 # chmod 600 /swapfile
+```
 
-// Format the swap file
-# mkswap /swapfile
+Format the swap file
 
-// Activate the swap file
-# swapon /swapfile
+```bash
+mkswap /swapfile
+```
 
-// Make the changes permanent
-# echo '/swapfile none swap sw 0 0' >> /etc/fstab
+Activate the swap file
 
-[+] INSTALLING KERNEL HEADERS
+```bash
+swapon /swapfile
+```
 
-# apt install linux-headers-amd64 linux-headers-$(uname -r)
+Make the changes permanent
 
-[+] INSTALLING LINUX FIRMWARE
+```bash
+echo '/swapfile none swap sw 0 0' >> /etc/fstab
+```
 
-# apt install firmware-linux firmware-linux-nonfree
+## 6. INSTALLING KERNEL HEADERS
 
-[+] INSTALLING APPLICATIONS
+```bash
+apt install linux-headers-amd64 linux-headers-$(uname -r)
+```
 
-# apt install curl
-# apt install git
-# Postman
-# Visual Studio Code
+## 7. INSTALLING LINUX FIRMWARE
 
-[+] CONFIGURING GIT AND GITHUB
+```bash
+apt install firmware-linux firmware-linux-nonfree
+```
 
-# ssh-keygen -t ed25519 -C "user@example.com"
+## 8. INSTALLING APPLICATIONS
 
-# git config --global user.name "User"
+```bash
+apt install curl
+apt install git
+```
 
-# git config --global user.email "user@example.com"
+- Postman
+- Node.js
+- PyCharm
+- Visual Studio Code
 
-[+] CONFIGURING POSTMAN
+## 9. CONFIGURING GIT AND GITHUB
 
-# tar -xzf postman.tar.gz -C /opt
+```bash
+ssh-keygen -t ed25519 -C "user@example.com"
 
-# ln -s /opt/Postman/Postman /usr/local/bin/postman
+git config --global user.name "User"
 
-# nano /usr/share/applications/postman.desktop
+git config --global user.email "user@example.com"
+```
 
--------------------------------------------------------------------------------------------------------------
+## 10. CONFIGURING POSTMAN
+
+```bash
+tar -xzf postman.tar.gz -C /opt
+
+ln -s /opt/Postman/Postman /usr/local/bin/postman
+
+nano /usr/share/applications/postman.desktop
+```
+
+```text
 [Desktop Entry]
 Version=1.0
 Type=Application
@@ -116,32 +153,44 @@ Icon=/opt/Postman/app/resources/app/assets/icon.png
 Terminal=false
 Categories=Development;
 StartupNotify=true
--------------------------------------------------------------------------------------------------------------
+```
 
-[+] ADDING A DIRECTORY TO USER $PATH
+## 11. ADDING A DIRECTORY TO USER $PATH
 
-- Edit the file ~/.bashrc:
+Edit the file ~/.bashrc:
 
-$ nano ~/.bashrc
+```bash
+nano ~/.bashrc
+```
 
-- Add the following line at the end of the file:
+Add the following line at the end of the file:
 
+```text
 export PATH="$PATH:/your/path"
+```
 
-- Apply the changes:
+Apply the changes:
 
-$ source ~/.bashrc
+```bash
+source ~/.bashrc
+```
 
-[+] ADDING A DIRECTORY TO SYSTEM-WIDE $PATH
+## 12. ADDING A DIRECTORY TO SYSTEM-WIDE $PATH
 
-- Create a script in /etc/profile.d/:
+Create a script in /etc/profile.d/:
 
-# nano /etc/profile.d/my-path.sh
+```bash
+nano /etc/profile.d/my-path.sh
+```
 
-- Add the following line:
+Add the following line:
 
+```text
 export PATH="$PATH:/your/path"
+```
 
-- Apply the changes:
+Apply the changes:
 
-# source /etc/profile.d/my-path.sh
+```bash
+source /etc/profile.d/my-path.sh
+```
