@@ -101,7 +101,9 @@ sudo find /var/www/wordpress -type f -exec chmod 644 {} +
 
 ```bash
 sudo nano /etc/nginx/sites-available/wordpress
+```
 
+```nginx
 server {
     listen 80;
     server_name _;
