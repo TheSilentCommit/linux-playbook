@@ -11,8 +11,13 @@ Linux-Playbook/
 │   └── debian-13-post-installation.md
 ├── virtualization/
 │   └── kvm.md
-└── web-stack/
-    └── nginx-php-mariadb-wordpress.md
+├── web-stack/
+│   └── nginx-php-mariadb-wordpress.md
+└── troubleshooting/
+    ├── network.md
+    ├── nginx.md
+    ├── storage.md
+    └── wordpress.md
 ```
    
 
