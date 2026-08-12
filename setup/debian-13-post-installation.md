@@ -14,7 +14,7 @@ apt purge gnome-connections
 apt autoremove
 ```
 
-## 2. Configure APT sources
+## 2. Configure APT Sources
 
 ```bash
 mv /etc/apt/sources.list /etc/apt/sources.list.bkp
@@ -43,13 +43,13 @@ deb https://deb.debian.org/debian trixie-updates main contrib non-free non-free-
 apt update && apt full-upgrade -y
 ```
 
-## 3. Install firewall tools
+## 3. Install Firewall Tools
 
 ```bash
 apt install ufw gufw
 ```
 
-## 4. Configure kernel swappiness values
+## 4. Configure Kernel Swappiness Values
 
 ```bash
 nano /etc/sysctl.d/99-swappiness.conf
