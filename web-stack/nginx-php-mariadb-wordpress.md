@@ -14,9 +14,13 @@ sudo apt install nginx -y
 
 ```bash
 sudo systemctl enable nginx
+```
 
+```bash
 sudo systemctl start nginx
+```
 
+```bash
 systemctl status nginx
 ```
 
@@ -30,11 +34,17 @@ sudo apt install mariadb-server mariadb-client -y
 
 ```bash
 sudo systemctl enable mariadb
+```
 
+```bash
 sudo systemctl start mariadb
+```
 
+```bash
 systemctl status mariadb
+```
 
+```bash
 sudo mysql_secure_installation
 ```
 
@@ -63,13 +73,21 @@ sudo mysql
 
 ```sql
 CREATE DATABASE wordpress CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
 
+```sql
 CREATE USER 'wpuser'@'localhost' IDENTIFIED BY 'WpuserPasswd123!';
+```
 
+```sql
 GRANT ALL PRIVILEGES ON wordpress.* TO 'wpuser'@'localhost';
+```
 
+```sql
 FLUSH PRIVILEGES;
+```
 
+```sql
 EXIT;
 ```
 
@@ -83,7 +101,9 @@ sudo apt install -y php-fpm php-mysql php-cli php-curl php-gd php-xml php-mbstri
 
 ```bash
 wget https://wordpress.org/latest.tar.gz
+```
 
+```bash
 sudo tar -xzf  latest.tar.gz -C /var/www
 ```
 
@@ -91,9 +111,13 @@ sudo tar -xzf  latest.tar.gz -C /var/www
 
 ```bash
 sudo chown -R www-data:www-data /var/www/wordpress
+```
 
+```bash
 sudo find /var/www/wordpress -type d -exec chmod 755 {} +
+```
 
+```bash
 sudo find /var/www/wordpress -type f -exec chmod 644 {} +
 ```
 
@@ -133,11 +157,17 @@ server {
 
 ```bash
 sudo ln -s /etc/nginx/sites-available/wordpress /etc/nginx/sites-enabled/
+```
 
+```bash
 sudo rm /etc/nginx/sites-enabled/default
+```
 
+```bash
 sudo nginx -t
+```
 
+```bash
 sudo systemctl reload nginx
 ```
 
@@ -147,9 +177,13 @@ Edit the WordPress configuration file:
 
 ```bash
 cd /var/www/wordpress
+```
 
+```bash
 sudo cp wp-config-sample.php wp-config.php
+```
 
+```bash
 sudo nano wp-config.php
 ```
 
@@ -166,9 +200,13 @@ define('DB_HOST', 'localhost');
 
 ```bash
 sudo ufw allow OpenSSH
+```
 
+```bash
 sudo ufw allow 'Nginx Full'
+```
 
+```bash
 sudo ufw enable
 ```
 
