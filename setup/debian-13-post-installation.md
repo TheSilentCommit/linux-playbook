@@ -1,18 +1,26 @@
-## 1. Remuving X11VNC and Gnome-Connections
+## 1. Remove X11VNC and Gnome-Connections
+
+On Debian, your user, by default, is not on the sudoers file, so you will need to run these commands as root
 
 ```bash
 apt purge x11vnc
+```
 
+```bash
 apt purge gnome-connections
+```
 
+```bash
 apt autoremove
 ```
 
-## 2. Configuring apt sources
+## 2. Configure APT sources
 
 ```bash
 mv /etc/apt/sources.list /etc/apt/sources.list.bkp
+```
 
+```bash
 nano /etc/apt/sources.list
 ```
 
@@ -35,13 +43,13 @@ deb https://deb.debian.org/debian trixie-updates main contrib non-free non-free-
 apt update && apt full-upgrade -y
 ```
 
-## 3. Installing firewall tools
+## 3. Install firewall tools
 
 ```bash
 apt install ufw gufw
 ```
 
-## 4. Configuring kernel swappiness values
+## 4. Configure kernel swappiness values
 
 ```bash
 nano /etc/sysctl.d/99-swappiness.conf
@@ -57,26 +65,28 @@ vm.swappiness=10
 vm.vfs_cache_pressure=50
 ```
 
-## 5. Creating swap file
+## 5. Create a Swap File
 
 Check if a swap file or partition already exists
 
 ```bash
 swapon --show
+```
 
+```bash
 free -h
 ```
 
 Create a swap file
 
 ```bash
-# fallocate -l 8G /swapfile
+fallocate -l 8G /swapfile
 ```
 
 Set permissions so only root can read and write
 
 ```bash
-# chmod 600 /swapfile
+chmod 600 /swapfile
 ```
 
 Format the swap file
@@ -97,22 +107,25 @@ Make the changes permanent
 echo '/swapfile none swap sw 0 0' >> /etc/fstab
 ```
 
-## 6. Installing kernel headers
+## 6. Install Kernel Headers
 
 ```bash
 apt install linux-headers-amd64 linux-headers-$(uname -r)
 ```
 
-## 7. Installing Linux firmware
+## 7. Install Linux Firmware
 
 ```bash
 apt install firmware-linux firmware-linux-nonfree
 ```
 
-## 8. Installing applications
+## 8. Install Applications
 
 ```bash
 apt install curl
+```
+
+```bash
 apt install git
 ```
 
@@ -121,23 +134,31 @@ apt install git
 - PyCharm
 - Visual Studio Code
 
-## 9. Configuring Git and GitHub
+## 9. Configure Git and GitHub
 
 ```bash
 ssh-keygen -t ed25519 -C "user@example.com"
+```
 
+```bash
 git config --global user.name "User"
+```
 
+```bash
 git config --global user.email "user@example.com"
 ```
 
-## 10. Configuring Postman
+## 10. Configure Postman
 
 ```bash
 tar -xzf postman.tar.gz -C /opt
+```
 
+```bash
 ln -s /opt/Postman/Postman /usr/local/bin/postman
+```
 
+```bash
 nano /usr/share/applications/postman.desktop
 ```
 
@@ -155,7 +176,7 @@ Categories=Development;
 StartupNotify=true
 ```
 
-## 11. Adding a directory to user's $PATH
+## 11. Add a Directory to the User's $PATH
 
 Edit the file ~/.bashrc:
 
@@ -175,7 +196,7 @@ Apply the changes:
 source ~/.bashrc
 ```
 
-## 12. Adding a directory to system-wide $PATH
+## 12. Add a Directory to the System-Wide $PATH
 
 Create a script in /etc/profile.d/:
 
