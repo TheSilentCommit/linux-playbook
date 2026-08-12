@@ -26,11 +26,17 @@
 
 ```bash
 sudo apt install -y qemu-system-x86 qemu-utils libvirt-daemon-system libvirt-clients virt-manager
+```
 
+```bash
 sudo systemctl enable --now libvirtd
+```
 
+```bash
 systemctl status libvirtd
+```
 
+```bash
 sudo usermod -aG libvirt,kvm $USER
 ```
 
