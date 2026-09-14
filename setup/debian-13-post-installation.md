@@ -1,4 +1,4 @@
-## 1. Remove X11VNC and Gnome-Connections
+## 1. Remove x11vnc and Gnome-Connections
 
 On Debian, your user, by default, is not on the sudoers file, so you will need to run these commands as root
 
